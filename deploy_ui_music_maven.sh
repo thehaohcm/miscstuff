@@ -1,36 +1,44 @@
 #!/bin/sh
 
-echo '********************************************************************'
-echo '* Author:       Hao Nguyen                                         *'
-echo '* Version:      1.0                                                *'
-echo '* Purpose:      Run script to deploy product MusicMaven Angular and*'
-echo '*               send it to server automatically                    *'
-echo '* Date Release: 06-24-2019                                         *'
-echo '********************************************************************'
+clear
+
+echo '          *****************************************************************'
+echo '          * Author:       Hao Nguyen                                      *'
+echo '          * Version:      1.0                                             *'
+echo '          * Purpose:      Run script to deploy product MusicMaven Angular *'
+echo '          *               and send it to server automatically             *'
+echo '          * Date Release: 06-24-2019                                      *'
+echo '          *****************************************************************'
 
 server=180.16.10.109
 username=root
 password=Aa123456@
 file_rsa=id_rsa_mb
-
 path=\/var\/www\/html\/
-if ! [ -d "music-maven"]; then
-    echo 'cannot found the folder \'music-maven\' in this current path'
+if [ -d "music-maven" ]; then
+    echo 'exists'
+else
+    echo 'not exists'
+fi
+
+if [ ! -d "music-maven" ]; then
+    echo 'cannot found the folder music-maven in this current path'
     echo 'exiting ...'
-	exit $?;
-fi;
-if ! [ -f "id_rsa_mb"]; then
-    echo 'cannot found the file \'id_rsa_mb\' in this current path'
+	exit $?
+fi
+echo abc
+if ! [ -f $file_rsa ]; then
+    echo 'cannot found the file id_rsa_mb in this current path'
     echo 'exiting ...'
-	exit $?;
-fi;
+	exit $?
+fi
 cd music-maven
-if [ -d "dist"]; then
-    echo 'found the \'dist\' folder'
+if [ -d "dist" ]; then
+    echo 'found the dist folder'
     echo 'removing the dist folder ...'
     rm -rf ./dist
     echo 'done'
-fi;
+fi
 echo 'building product angular ...'
 ng build --prod --base-href /music-maven/
 check
@@ -54,6 +62,8 @@ function check {
         echo OK
     else
         echo FAIL
-        exit $?;
+        exit $?
     fi;
 }
+
+exit 0
