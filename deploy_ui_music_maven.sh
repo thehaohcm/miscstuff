@@ -45,7 +45,7 @@ check
 echo 'done'
 cd ./dist/music-maven
 echo 'trying to replace the path of URL ...'
-sed 's/.../\./music-maven//' index.html
+sed 's/<base href=\"\(.*\)\">/<base href=\"\.\/music-maven\/\">' index.html
 check
 echo 'done'
 cd ..
