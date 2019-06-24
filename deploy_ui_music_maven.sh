@@ -3,16 +3,18 @@
 clear
 
 echo '          *****************************************************************'
-echo '          * Author:       Hao Nguyen                                      *'
+echo '          * Author:       Hao Nguyen (thehaohcm@yahoo.com.vn)             *'
 echo '          * Version:      1.0                                             *'
 echo '          * Purpose:      Run script to deploy product MusicMaven Angular *'
 echo '          *               and send it to server automatically             *'
-echo '          * Date Release: 06-24-2019                                      *'
+echo '          * Date Release: 06-2-2019                                       *'
+echo '          *****************************************************************'
+echo '          * Note:		Please contact with Server Administrator to     *'
+echo '          *               make sure that your creditial working properly  *'				 
 echo '          *****************************************************************'
 
 server=180.16.10.109
 username=root
-password=Aa123456@
 file_rsa=id_rsa_mb
 path=\/var\/www\/html\/
 if [ -d "music-maven" ]; then
@@ -45,7 +47,7 @@ check
 echo 'done'
 cd ./dist/music-maven
 echo 'trying to replace the path of URL ...'
-sed 's/<base href=\"\(.*\)\">/<base href=\"\.\/music-maven\/\">' index.html
+sed -i -e "s/<base href=.*/<base href=\"\.\/music-maven\/\">/g" index.html
 check
 echo 'done'
 cd ..
