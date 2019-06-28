@@ -56,7 +56,16 @@ scp -i $file_rsa -r ./music-maven $username@$server:$path
 check
 echo done
 echo trying to run script set permission for all of server\'s path \($server\) ...
-ssh -i $file_rsa $username@$server '/opt/musicmayvn/deploy_ui_script.sh'
+#ssh -i $file_rsa $username@$server '/opt/musicmayvn/deploy_ui_script.sh'
+ssh -i $file_rsa $username@$server << EOF
+ cd $path
+ cd music-maven
+ find -type d -exec chmod 755 {} \;
+ find -type f -exec chmod 644 {} \;
+ cd ..
+ chmod 755 music-maven
+ chown -R nginx:nginx music-maven
+EOF
 check
 
 function check {
