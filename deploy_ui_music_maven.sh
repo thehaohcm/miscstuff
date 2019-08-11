@@ -13,10 +13,16 @@ echo '          * Note:		Please contact with Server Administrator if     *'
 echo '          *               your creditial not working properly             *'				 
 echo '          *****************************************************************'
 
-server=180.16.10.109
-username=root
-file_rsa=id_rsa_mb
-path=\/var\/www\/html\/
+#server=180.16.10.109
+#username=root
+#file_rsa=id_rsa_mb
+#path=\/var\/www\/html\/
+server=ec2-52-15-111-218.us-east-2.compute.amazonaws.com
+username=centos
+file_rsa=musicmaven.pem
+path=\/tmp\/
+path_html=\/var\/www\/html\/
+music_maven=music-maven
 if [ -d "music-maven" ]; then
     echo 'exists'
 else
@@ -58,13 +64,15 @@ echo done
 echo trying to run script set permission for all of server\'s path \($server\) ...
 #ssh -i $file_rsa $username@$server '/opt/musicmayvn/deploy_ui_script.sh'
 ssh -i $file_rsa $username@$server << EOF
+ sudo su -
+ cp $path$music_maven $path_html
  cd $path
- cd music-maven
- find -type d -exec chmod 755 {} \;
- find -type f -exec chmod 644 {} \;
- cd ..
- chmod 755 music-maven
- chown -R nginx:nginx music-maven
+ #cd music-maven
+ #find -type d -exec chmod 755 {} \;
+ #find -type f -exec chmod 644 {} \;
+ #cd ..
+ #chmod 755 music-maven
+ #chown -R nginx:nginx music-maven
 EOF
 check
 
