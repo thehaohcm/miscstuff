@@ -10,7 +10,7 @@ echo '          *               send it to server automatically                 
 echo '          * Date Release: 08-12-2019                                      *'
 echo '          *****************************************************************'
 echo '          * Note:		Please contact with Server Administrator if     *'
-echo '          *               your creditial doesn\'t work properly           *'				 
+echo '          *               your creditial does not work properly           *'				 
 echo '          *****************************************************************'
 
 #server=180.16.10.109
