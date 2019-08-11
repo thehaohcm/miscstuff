@@ -5,12 +5,12 @@ clear
 echo '          *****************************************************************'
 echo '          * Author:       Hao Nguyen (thehaohcm@yahoo.com.vn)             *'
 echo '          * Version:      1.0                                             *'
-echo '          * Purpose:      Run script to deploy product MusicMaven Angular *'
-echo '          *               and send it to server automatically             *'
-echo '          * Date Release: 06-2-2019                                       *'
+echo '          * Purpose:      Deploys the MusicMaven Angular Project and      *'
+echo '          *               send it to server automatically                 *'
+echo '          * Date Release: 08-12-2019                                      *'
 echo '          *****************************************************************'
 echo '          * Note:		Please contact with Server Administrator if     *'
-echo '          *               your creditial not working properly             *'				 
+echo '          *               your creditial doesn't work properly            *'				 
 echo '          *****************************************************************'
 
 #server=180.16.10.109
