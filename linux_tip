@@ -1,0 +1,2 @@
+create user: sudo useradd [user_name]
+create ssh key: ssh-keygen -f [file_name_will_be_generated]
