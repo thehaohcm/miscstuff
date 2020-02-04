@@ -1,0 +1,1 @@
+commit empty status: git commit --allow-empty -m "[commit_name]"
