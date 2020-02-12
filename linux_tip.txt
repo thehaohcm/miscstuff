@@ -1,3 +1,14 @@
 create user: sudo useradd [user_name]
 create ssh key: ssh-keygen -f [file_name_will_be_generated]
 run a script in the other server via ssh: ssh -i [pem_file] [username]@[hostname] "[cmd]"
+list all serivces on linux:
+  - systemctl
+  - systemctl list-unit-files
+  
+example:
+  - systemctl | grep httpd
+  - systemctl list-units --type service
+  - systemctl list-units --type mount 
+  
+get specific service on linux:
+  - systemctl | grep '[name_of_serivce]'
