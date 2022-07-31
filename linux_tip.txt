@@ -22,6 +22,7 @@ NOTICE:
   - use yum/dnf if you want to install a new package via the Internet
   - use rpm if you just want to install an existing rpm file in RedHat distros (cannot use rpm file in Debian distros)
   - use rpm if you want to check existing libs/apps installed in local PC already or not
+  - all added repositories by yum cmd will be placed in /etc/yum.repo file
 
 remove package in RedHat/Centos:
   - yum remove [package_name]
@@ -31,6 +32,5 @@ get list of package name in RedHat/Centos:
   - rpm -qa 
 count:
   - rpm -qa | wc -l
-
 get and check specific package installed or not:
   - rpm -qa | grep [package_name]
