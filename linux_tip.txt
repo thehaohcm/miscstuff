@@ -40,4 +40,4 @@ Upgrade Major Version of RedHat distros (ex: 5, 6, 7,...): so cumbersome, we hav
 Upgrade Minor Version (ex: 7.3, 7.4,...): use yum update
 Difference between yum update and yum upgrade:
   - yum upgrade: delete the old packages version and replace them with the newest (if any)
-  - yum update: preserve the old packages version, no install the new version, use update command if you consider some apps might conflit to each other because of newer version
+  - yum update: update the repo's packages database in /etc/apt/sources.list or /etc/yum.repo.d and not upgrade any packages in machine
