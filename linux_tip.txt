@@ -30,10 +30,23 @@ remove package in RedHat/Centos:
 
 get list of package name in RedHat/Centos:
   - rpm -qa 
+  
+list configuration files of a package name:
+  - rpm -qc [package_name]
+ 
+ check which package a cmd (or path of cmd) belongs to:
+   - rpm -qf [cmd or path of command]
+   ex:
+     - run cmnd:
+        - which ksh => /usr/bin/sh
+        - rpm -qf /usr/bin/sh => ksh-*.e17.x86_64
+
 count:
   - rpm -qa | wc -l
 get and check specific package installed or not:
   - rpm -qa | grep [package_name]
+get info of the rpm file:
+  - rpm -qi [rpm file path]
 
 check version of RedHat machine: cat /etc/redhat-release
 Upgrade Major Version of RedHat distros (ex: 5, 6, 7,...): so cumbersome, we have to backup the current data and then install/upgrade OS from scratch, finally store the data as before
@@ -41,3 +54,38 @@ Upgrade Minor Version (ex: 7.3, 7.4,...): use yum update
 Difference between yum update and yum upgrade:
   - yum upgrade: delete the old packages version and replace them with the newest (if any)
   - yum update: update the repo's packages database in /etc/apt/sources.list or /etc/yum.repo.d and not upgrade any packages in machine
+
+
+-------
+
+ls cmd with parameters:
+  -l : get more info about the files folder list
+  -t (stands for time): list the newest files/folders in the top, and the rest in the bottom
+  -r (stands for reverse): list files/folders with a reverse order
+  
+fdisk -l: list all file system and where is it mounted, as well as how many partitions of the disk, disk and partitions's info (sector, size, type,...)
+
+------
+Control Services and Daemons
+
+check all running services: 
+  - systemctl --all
+
+reload service:
+  - systemctl reload [service_name]
+  
+different between stop/start and reload
+  - the stop/start cmd is going to impact service
+  - whereas the reload cmd doens't impact service
+  ex: if we configure a httpd (apache), then restart/stop-start this service, the page will have a downtime
+  but if we use reload service, no downtime happends
+  
+mask/unmask service:
+  - mask is a stronger way to disable service by creating a symbolink to /dev/null to make sure the service cannot be used in future (it is very handful if we want to notice that the service is deprecated or not available in this time, or just want to stop the service temporarily)
+  - we can remove the symbolink mask by unmask command the service
+  - mask: systemctl mask [service_name]
+  - unmask: systemctl unmask [service_name]
+  
+----  
+stuff:
+- in Centos 7, it has 2 firewall services named firewalld and iptables, but we should only choose to use and configure one of them at a time
