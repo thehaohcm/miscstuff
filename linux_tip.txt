@@ -12,3 +12,25 @@ example:
   
 get specific service on linux:
   - systemctl | grep '[name_of_serivce]'
+
+install package in RedHat/Centos:
+  - yum install [package_name] (includes donwloading package from internet) 
+  - dnf install [package_name]
+  - rpm -ihv [package_file_rpm] (install package file rpm in local)
+NOTICE: 
+  - yum will be deprecated in near future and will be replaced with dnf
+  - use yum/dnf if you want to install a new package via the Internet
+  - use rpm if you just want to install an existing rpm file in RedHat distros (cannot use rpm file in Debian distros)
+  - use rpm if you want to check existing libs/apps installed in local PC already or not
+
+remove package in RedHat/Centos:
+  - yum remove [package_name]
+  - rpm -e [package_name]
+
+get list of package name in RedHat/Centos:
+  - rpm -qa 
+count:
+  - rpm -qa | wc -l
+
+get and check specific package installed or not:
+  - rpm -qa | grep [package_name]
