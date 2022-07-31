@@ -22,7 +22,7 @@ NOTICE:
   - use yum/dnf if you want to install a new package via the Internet
   - use rpm if you just want to install an existing rpm file in RedHat distros (cannot use rpm file in Debian distros)
   - use rpm if you want to check existing libs/apps installed in local PC already or not
-  - all added repositories by yum cmd will be placed in /etc/yum.repo file
+  - all added repositories by yum cmd will be placed in /etc/yum.repos.d file
 
 remove package in RedHat/Centos:
   - yum remove [package_name]
@@ -34,3 +34,10 @@ count:
   - rpm -qa | wc -l
 get and check specific package installed or not:
   - rpm -qa | grep [package_name]
+
+check version of RedHat machine: cat /etc/redhat-release
+Upgrade Major Version of RedHat distros (ex: 5, 6, 7,...): so cumbersome, we have to backup the current data and then install/upgrade OS from scratch, finally store the data as before
+Upgrade Minor Version (ex: 7.3, 7.4,...): use yum update
+Difference between yum update and yum upgrade:
+  - yum upgrade: delete the old packages version and replace them with the newest (if any)
+  - yum update: preserve the old packages version, no install the new version, use update command if you consider some apps might conflit to each other because of newer version
