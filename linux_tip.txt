@@ -89,3 +89,30 @@ mask/unmask service:
 ----  
 stuff:
 - in Centos 7, it has 2 firewall services named firewalld and iptables, but we should only choose to use and configure one of them at a time
+
+----
+Configure and secure SSH
+
+Configure Idle Timeout Interval:
+  - Become root
+  - Edit /etc/ssh/sshd_config, append new 2 below lines:
+     + ClientAliveInterval 600
+     + ClientAliveCountMax 0
+  - Run command to restart sshd: systemctl restart sshd
+NOTICE: 600 secs = 10 mins, after this interval, the idle user will be logged out
+
+Configure to disable root login
+Should to do it when setting up the system for the 1st time. It disbale any user to login to system with root account
+  - Become root
+  - Edit /etc/ssh/sshd_config file and replace "PermitRootLogin" from "yes" to "no"
+    + PermitRootLogin no
+  - Restart the sshd: systemctl restart sshd
+
+Disable Empty Password
+prevent remote logins from accounts with empty password for added security
+  - Become root
+  - Edit /etc/ssh/sshd_config, remove # from the line
+    + PermitEmptyPassword no
+  - systemctl restart sshd
+  
+Limit Users' SSH Access
