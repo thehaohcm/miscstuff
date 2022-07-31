@@ -22,7 +22,7 @@ NOTICE:
   - use yum/dnf if you want to install a new package via the Internet
   - use rpm if you just want to install an existing rpm file in RedHat distros (cannot use rpm file in Debian distros)
   - use rpm if you want to check existing libs/apps installed in local PC already or not
-  - all added repositories by yum cmd will be placed in /etc/yum.repos.d file
+  - all added repositories by yum cmd will be placed in /etc/yum.repos.d file (for RedHat-based distros) or /etc/apt/sources.list (for Debian-based distros)
 
 remove package in RedHat/Centos:
   - yum remove [package_name]
