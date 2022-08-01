@@ -194,5 +194,28 @@ How to reset the root password on RHEL 7 and Centos 7
 - type 'mount -o remount,rw [/sysroot]/'  (sysroot in this exam is a root directory of the OS)
 - type 'chroot [/sysroot]/'
 - type 'passwd' and type the new password twice
-- type 'touch /.autorelabel' (especially when we use SELinux, to avoid messup the Linux environment when boot up)
+- type 'touch /.autorelabel' (especially when we use SELinux, to avoid messing up the Linux environment when boot in the next time)
 - type 'exit' couple times to reboot the machine
+- Done
+
+------
+SELinux = Security-Enhanced Linux
+SELinux has 3 modes:
+  + Enforcing
+  + Permissive
+  + Disabled
+  
+Commands:
+- getenforce: get current status of SELinux
+
+Configure to turn on/off SELinux by either one of 2 ways: 
+  - SELINUX=[enforcing/permissive/disabled] in file /etc/selinux/config
+  - run command: setenforce [enforcing/permissive/disabled]
+After changing, make sure that the machine has to be restarted to apply a new change
+
+A policy in SELinux is consist of: Users (access to)-> Roles (access to)-> Domains (access to)-> Files
+
+List all modules that are in the SELinux: semodule -l | less
+Change boolean setting:  semanage boolean -l | less
+Get current status of the particular boolean: getsebool ftp_home_dir -> result: ftp_home_dir --> off
+Set status for the particular boolean: setsebool ftp_home_dir -> result: ftp_home_dir --> on
