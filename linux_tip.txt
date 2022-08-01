@@ -149,17 +149,34 @@ A flow how to create a key for accessing server without password:
 Monitor and manage Linux processes
 
 df (disk free): report file system disk space usage
+  + df -T: get type of file system
+  
 du (disk usage): estimate file space usage
   + du -k: show all file usage with kilobyte
   + du -k / | sort -nr: show all file usage with kilobyte, then sort them with reverse order
-uptime
-top
-free
-lsof
-tcpdump
-netstat
-ps
-kill
+  
+uptime: tell how long the system has been running
+
+top: display linux proccesses
+
+free: display RAM info
+
+lsof: list open files
+
+tcpdump: show all comming into and going out traffics of the system with realtime watch (as feature as wireshake)
+  + tcpdump -i [network interface]: shows all traffic of a specificed network interface 
+  
+netstat: print network connection, routing tables, interface statistics,...
+  + netstat -rnv: shows network traffics and gateways 
+  + netstat -a: shows all connection infomation that is connected to outside
+  + netstat -au: shows all UDP traffics
+  + netstat -at: show all TCP traffics
+  
+ps: report all current proccesses
+  + ps -ef: show all running proccesses
+kill: kill a specificed proccess (with PID)
+  + kill [PID]
+  + kill -9 [PID]: force killing proccess and its associated proccesses
 vmstat
 iostat
 iftop
