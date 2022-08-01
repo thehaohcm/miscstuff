@@ -184,3 +184,15 @@ iftop
 
 
 ------
+How to reset the root password on RHEL 7 and Centos 7
+
+- reboot the machine, then in the option OS black screen, choose the 1st item, then hit 'e' key to edit
+- press a down arrow key to scroll down the text file until see the word 'linux16', then break 'end' key to go to the end of line
+- append this text in the end of line ' rd.break'
+- press ctr + X to save and reboot
+- in the next time when the OS booted, it will show a black terminal screen, type 'mount' and let see the last line with something like '[/sysroot] type xfs (ro,relatime,attr2,inode64,noquota)
+- type 'mount -o remount,rw [/sysroot]/'  (sysroot in this exam is a root directory of the OS)
+- type 'chroot [/sysroot]/'
+- type 'passwd' and type the new password twice
+- type 'touch /.autorelabel' (especially when we use SELinux, to avoid messup the Linux environment when boot up)
+- type 'exit' couple times to reboot the machine
