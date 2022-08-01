@@ -143,3 +143,27 @@ A flow how to create a key for accessing server without password:
 - From now, the client doesn't need to provide username and password for login into server
   + ssh [user]@[ip-address]
   + ssh -l [user] [ip-address]
+
+
+------
+Monitor and manage Linux processes
+
+df (disk free): report file system disk space usage
+du (disk usage): estimate file space usage
+  + du -k: show all file usage with kilobyte
+  + du -k / | sort -nr: show all file usage with kilobyte, then sort them with reverse order
+uptime
+top
+free
+lsof
+tcpdump
+netstat
+ps
+kill
+vmstat
+iostat
+iftop
+...
+
+
+------
