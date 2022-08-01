@@ -116,3 +116,30 @@ prevent remote logins from accounts with empty password for added security
   - systemctl restart sshd
   
 Limit Users' SSH Access
+To provide another layer of security, you should limit your SSH logins to only certain users who need remote access
+  - Become root
+  - Edit /etc/sshd_config and add
+    + AllowUsers [user1] [user2] # only these users are only allowed to access SSH
+  - systemctl restart sshd
+  
+Use a different port
+Make the system more secure by change the default SSH port is 22 to another
+  - Become root
+  - Edit /etc/sshd_config and add the following statement or remove the # signal
+    + Port [22 | or any port number you like]
+  - systemctl restart sshd
+  
+SSH-Keys - Access Remote Server without Password (but with a key)
+Assumes we have 2 Linux machine
+1. Client Machine which needs to access the Server without input username and password
+2. Server machine which serves and allows client access
+A flow how to create a key for accessing server without password:
+- Become root
+  + su -
+- Create/Generate keys in Client machine
+  + ssh-keygen
+- Copy over the keys from client to server
+  + ssh-copy-id [user]@[ip-address]
+- From now, the client doesn't need to provide username and password for login into server
+  + ssh [user]@[ip-address]
+  + ssh -l [user] [ip-address]
